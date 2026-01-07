@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Baloo+2:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* 极光渐变背景 - 更新为PRD要求的渐变方向 */
+  .aurora-bg {
+    background: linear-gradient(
+      to bottom right,
+      #fbcfe8, /* pink-300 */
+      #c4b5fd, /* purple-300 */
+      #818cf8  /* indigo-400 */
+    );
+    background-size: 400% 400%;
+    animation: aurora 25s ease infinite;
+  }
+
+  /* Fallback样式 - 不支持backdrop-filter的浏览器 */
+  @supports not (backdrop-filter: blur(12px)) {
+    .aurora-bg {
+      background: linear-gradient(
+        to bottom right,
+        #fbcfe8,
+        #c4b5fd,
+        #818cf8
+      );
+    }
+  }
+
+  /* Cloudmorphism 样式 */
+  .cloudmorphism {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  /* 文字发光效果 */
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4);
+  }
+
+  /* 羊皮纸纹理 */
+  .parchment {
+    background: #f4e4bc;
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,0.03) 50%, transparent 50%),
+      linear-gradient(rgba(0,0,0,0.03) 50%, transparent 50%);
+    background-size: 20px 20px;
+    border: 2px solid #d4c5a9;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+  }
+}
+
