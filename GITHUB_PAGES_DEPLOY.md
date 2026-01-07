@@ -322,11 +322,34 @@ Published
    - Folder（文件夹）：选择 `/ (root)`
 5. 点击 **Save**（保存）
 
-### 步骤 4：等待 GitHub 处理
+### 步骤 4：启用 HTTPS（重要！）
 
-- GitHub 需要几分钟来处理部署
+**⚠️ 这是解决"高危网站提示"的关键步骤！**
+
+1. 在 **Pages** 设置页面，找到 **"Enforce HTTPS"**（强制 HTTPS）选项
+2. 如果显示 **"Enforce HTTPS"** 复选框：
+   - ✅ **勾选** "Enforce HTTPS" 复选框
+   - 点击 **Save**（保存）
+3. 如果显示 **"Enforce HTTPS"** 按钮：
+   - 点击 **"Enforce HTTPS"** 按钮
+   - 等待几秒钟，按钮会变为已启用状态
+
+**说明**：
+- 启用 HTTPS 后，所有 HTTP 访问会自动重定向到 HTTPS
+- 这是解决手机端"高危网站提示"的最重要步骤
+- 如果未启用 HTTPS，某些浏览器会显示安全警告
+
+**如果 "Enforce HTTPS" 选项不可用**：
+- 等待几分钟后重试（GitHub 需要时间配置 SSL 证书）
+- 确保仓库是 Public（公开）仓库
+- 如果使用自定义域名，需要先配置域名 DNS
+
+### 步骤 5：等待 GitHub 处理
+
+- GitHub 需要几分钟来处理部署和 SSL 证书配置
 - 页面会显示：`Your site is live at https://your-username.github.io/dream-painter/`
 - 如果显示 "Your site is ready to be published"，等待几分钟后刷新页面
+- **确认网站地址是 HTTPS**（不是 HTTP）
 
 ---
 
