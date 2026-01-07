@@ -1,3 +1,4 @@
+/* 字体加载优化：使用 font-display: swap 和 preconnect */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Baloo+2:wght@400;600;700&display=swap');
 @tailwind base;
 @tailwind components;
@@ -18,7 +19,8 @@
   }
 
   body {
-    font-family: 'Nunito', sans-serif;
+    /* 添加字体 fallback，确保字体加载失败时仍能正常显示 */
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -56,12 +58,20 @@
 
   /* Cloudmorphism 样式 */
   .cloudmorphism {
-    background: rgba(255, 255, 255, 0.3);
+    /* Fallback：更不透明的背景，确保在不支持 backdrop-filter 的浏览器中也能正常显示 */
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  /* 针对不支持 backdrop-filter 的浏览器的 fallback */
+  @supports not (backdrop-filter: blur(20px)) {
+    .cloudmorphism {
+      background: rgba(255, 255, 255, 0.7); /* 更不透明的背景 */
+    }
   }
 
   /* 文字发光效果 */

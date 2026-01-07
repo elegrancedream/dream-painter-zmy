@@ -2,14 +2,88 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
     <meta name="description" content="梦境画师 - 将梦境转化为画作的H5 Web应用" />
+    <meta name="theme-color" content="#818cf8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <title>梦境画师 - Dream Painter</title>
+
+    <!-- 内联关键CSS（提升首屏渲染速度） -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #root {
+        width: 100%;
+        min-height: 100vh;
+      }
+      /* 加载中提示 */
+      #root:empty::before {
+        content: '加载中...';
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #818cf8;
+        font-size: 18px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- 全局错误处理 -->
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('全局错误:', {
+          message: e.message,
+          filename: e.filename,
+          lineno: e.lineno,
+          colno: e.colno,
+          error: e.error
+        });
+      });
+
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('未处理的Promise拒绝:', e.reason);
+      });
+
+      // 检查关键资源加载
+      window.addEventListener('load', function() {
+        const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+        const scripts = document.querySelectorAll('script[src]');
+
+        stylesheets.forEach(link => {
+          link.addEventListener('error', function() {
+            console.error('样式表加载失败:', link.href);
+          });
+        });
+
+        scripts.forEach(script => {
+          script.addEventListener('error', function() {
+            console.error('脚本加载失败:', script.src);
+          });
+        });
+      });
+    </script>
   </body>
 </html>
 
