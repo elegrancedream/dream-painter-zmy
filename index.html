@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
     <meta name="description" content="梦境画师 - 将梦境转化为画作的H5 Web应用" />
     <meta name="theme-color" content="#818cf8" />
+
+    <!-- 安全相关 meta 标签 -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      connect-src 'self' https://api.coze.cn;
+      frame-ancestors 'none';
+    " />
+
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
 
     <!-- 预加载关键资源 -->
@@ -45,10 +63,10 @@
         font-size: 18px;
       }
     </style>
-    <script type="module" crossorigin src="/dream-painter-zmy/assets/index-vD0nJhXI.js"></script>
+    <script type="module" crossorigin src="/dream-painter-zmy/assets/index-DY8DIVmp.js"></script>
     <link rel="modulepreload" crossorigin href="/dream-painter-zmy/assets/react-vendor-wGySg1uH.js">
     <link rel="modulepreload" crossorigin href="/dream-painter-zmy/assets/framer-motion--IpldGsu.js">
-    <link rel="stylesheet" crossorigin href="/dream-painter-zmy/assets/index-BP3nl1BD.css">
+    <link rel="stylesheet" crossorigin href="/dream-painter-zmy/assets/index-DwBpSrN-.css">
   </head>
   <body>
     <div id="root"></div>
